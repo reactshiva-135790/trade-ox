@@ -19,7 +19,6 @@ import MainSwap from "../pages/mainSwap/MainSwap";
 import Contact from "../pages/contactPage/Contact"
 
 import { TabPage } from "../common/tabs/TabPage";
-import MyComponent from "../MyComponent";
 
 function Routepage() {
   let element = useRoutes([
@@ -54,10 +53,6 @@ function Routepage() {
     {
       path: "contact-us",
       element: <Contact />,
-    },
-    {
-      path: "my-component",
-      element: <MyComponent />,
     },
     {
       element: <TabPage />,

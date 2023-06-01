@@ -329,7 +329,7 @@ const AddLiquidity = (props) => {
         }
     };
 
-
+    
     const handleValueOne = async (dataTwo, getABiOne, approveWcinWalletOne) => {
         setAddressTwo(item.contractAddress);
         setValueData();
@@ -412,7 +412,6 @@ const AddLiquidity = (props) => {
                         }
                     >
                         {dataOne === "FUFI" ? "Add Liquidity ETH" : "Confirm LP"}
-                        
                     </Button>
                 </div>
             );
