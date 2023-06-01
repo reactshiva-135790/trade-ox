@@ -71,6 +71,7 @@ function RemoveLiquidity() {
             const [token0Name, token1Name] = await Promise.all([
                 getTokendetails(token0),
                 getTokendetails(token1)
+
             ]);
             const totalSupplyEth = Web3.utils.fromWei(totalSupply, 'ether');
             const reserve0Eth = Web3.utils.fromWei(reserves._reserve0, 'ether');
@@ -79,7 +80,7 @@ function RemoveLiquidity() {
             const userLp1 = (liquidityEth / totalSupplyEth) * reserve0Eth;
             const userLp2 = (liquidityEth / totalSupplyEth) * reserve1Eth;
             if (userLp1 !== 0) {
-                console.log("userLp1vhxzg",token0Name, token1Name);
+                console.log("userLp1vhxzg", token0Name, token1Name);
                 return [pairAddress, userLp1, userLp2, token0Name, token1Name];
             }
             return null;
@@ -235,10 +236,17 @@ function RemoveLiquidity() {
             })
     }
 
+
     const removeLiquidityETH = async () => {
+        console.log("removeLiquidityETH")
         window.connectRouterV2 = await new web3.eth.Contract(routerV2ABI, routerV2);
-        const tokenAaddress = "0x6c387434f935cb08905b41ff97391d458579bd98";
-        const Liquidity = liquidityAmount.toString();
+        //const tokenAaddress = "0x6c387434f935cb08905b41ff97391d458579bd98"; // token address
+        let tokenAaddressETH = contract.methods.token0().call();
+        let tokenAaddress = await tokenAaddressETH.then((result) => {
+            console.log("tokenA", result);
+            return result;
+        });
+        const Liquidity = liquidityAmount.toString(); // input value    
         const amountTokenmin = 0;
         const amountEthmin = 0;
         const toAddress = account;
@@ -280,6 +288,7 @@ function RemoveLiquidity() {
         }
     }
 
+
     const removeLiquidityETHWithPermit = async () => {
         window.connectRouterV2 = new web3.eth.Contract(routerV2ABI, routerV2);
         const tokenAaddress = "0x6c387434f935cb08905b41ff97391d458579bd98";
@@ -292,9 +301,10 @@ function RemoveLiquidity() {
         const v = signatureData.v;
         const r = signatureData.r;
         const s = signatureData.s;
-        console.log("saurabh", "v:", v, ", r:", r, ", s:", s)
+        //console.log("saurabh", "v:", v, ", r:", r, ", s:", s)
         await window.connectRouterV2.methods.removeLiquidityETHWithPermit(tokenAaddress, Liquidity, amountAmin, amountBmin, toAddress, deadlineFromNow, approveMax, v, r, s).send({ from: account });
     }
+
 
     const removeLiquidityETHWithPermitSupportingFeeOnTransferTokens = async () => {
         window.connectRouterV2 = new web3.eth.Contract(routerV2ABI, routerV2);
@@ -312,6 +322,7 @@ function RemoveLiquidity() {
         await window.connectRouterV2.methods.removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(tokenAaddress, Liquidity, amountAmin, amountBmin, toAddress, deadlineFromNow, approveMax, v, r, s).send({ from: account });
     }
 
+
     const removeLiquidityWithPermit = async () => {
         window.connectRouterV2 = new web3.eth.Contract(routerV2ABI, routerV2);
         const tokenAaddress = "0x6c387434f935cb08905b41ff97391d458579bd98";
@@ -325,13 +336,15 @@ function RemoveLiquidity() {
         const v = signatureData.v;
         const r = signatureData.r;
         const s = signatureData.s;
-        console.log("saurabh", "v:", v, ", r:", r, ", s:", s)
+        //console.log("saurabh", "v:", v, ", r:", r, ", s:", s)
         await window.connectRouterV2.methods.removeLiquidityWithPermit(tokenAaddress, tokenBaddress, Liquidity, amountAmin, amountBmin, toAddress, deadlineFromNow, approveMax, v, r, s).send({ from: account });
     }
+
 
     const inputsHandler = (e) => {
         setInputValue(e.target.value);
     };
+
 
     return (
         <section>
@@ -409,8 +422,17 @@ function RemoveLiquidity() {
                         Approve
                     </Button>
                     <ToastContainer />
-                    <Button variant="warning" onClick={removeLiquidity}>
+                    <Button
+                        variant="warning"
+                        onClick={removeLiquidity}
+                    >
                         Confirm
+                        
+                        {/* onClick={() => (flag ? function1() : function2())}  
+
+                        () => (userLp1 === WrappedFUFI ? removeLiquidityETH() : removeLiquidity())
+                        
+                        */}
                     </Button>
                     <ToastContainer />
                 </Modal.Footer>
