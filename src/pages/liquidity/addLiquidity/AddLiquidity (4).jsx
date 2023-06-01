@@ -138,21 +138,21 @@ const AddLiquidity = (props) => {
         }
     };
 
-    const approveWcinWalletOne = async (abiData, addressTwo, inputValue, spenderAddress) => {
-        console.log("AddressOne", abiData._jsonInterface, addressTwo, inputValue, spenderAddress)
-        console.log("abiDataOne:", abiData._jsonInterface);
+    const approveWcinWalletOne = async (abiDataOne, addressTwo, inputValueOne, spenderAddress) => {
+        console.log("AddressOne", abiDataOne, addressTwo, inputValueOne, spenderAddress)
+        console.log("abiDataOne:", abiDataOne);
         console.log("Address Two:", addressTwo);
-        console.log("Input Value:", inputValue);
+        console.log("Input Value:", inputValueOne);
         try {
-            if (abiData === 0) {
+            if (abiDataOne === 0) {
                 <div className="spinner">
 
                 </div>
             } else {
-                console.log("abiDataOne", abiData._jsonInterface);
+                console.log("abiDataOne", abiDataOne);
                 const web3 = new Web3(library.provider);
-                const contract = new web3.eth.Contract(dataOne === "FUFI" ? abiData._jsonInterface : abiData, addressTwo);
-                const tokenBals = web3.utils.toWei(inputValue, "ether");
+                const contract = new web3.eth.Contract(abiDataOne, addressTwo);
+                const tokenBals = web3.utils.toWei(inputValueOne, "ether");
 
                 const accounts = await web3.eth.getAccounts();
                 const fromAccount = accounts[0];
@@ -241,7 +241,6 @@ const AddLiquidity = (props) => {
             let Abi = res.data.result;
             const abiArray = JSON.parse(Abi);
             console.log("res", res);
-            console.log("abiArray--->11 ", abiArray)
             setABIdata(abiArray);
         } catch (error) {
             setIsErrorOne(error.message);
@@ -252,7 +251,7 @@ const AddLiquidity = (props) => {
     const getABiOne = async (contractAddress) => {
         try {
             console.log("contractAddressOne", contractAddress);
-            const res = await getAbi("0xcc2cca6096d1c6adb4d8580ecfecd585df19454d");
+            const res = await getAbi(contractAddress);
             let AbiOne = res.data.result;
             const abiArray = JSON.parse(AbiOne);
             console.log("resOne", res);
@@ -294,7 +293,7 @@ const AddLiquidity = (props) => {
         setInputValue(e.target.value);
 
         setInputValueOne(e.target.value);
-        
+        a
     };
 
 
@@ -303,7 +302,7 @@ const AddLiquidity = (props) => {
         await getABi(selectedCoin);
 
         if (dataOne === "FUFI") {
-            approveWcinWalletOne(abiDataOne, addressTwo, inputValueOne, CONTRACT_ADDRESS);
+            approveWcinWalletOne(abiDataOne, addressTwo, inputValueOne,CONTRACT_ADDRESS);
         } else {
             approveWcinWallet(abiData, addressOne, inputValue, CONTRACT_ADDRESS);
         }
