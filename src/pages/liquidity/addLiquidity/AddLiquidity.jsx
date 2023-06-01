@@ -294,7 +294,7 @@ const AddLiquidity = (props) => {
         setInputValue(e.target.value);
 
         setInputValueOne(e.target.value);
-        
+
     };
 
 
@@ -408,10 +408,11 @@ const AddLiquidity = (props) => {
                         variant="warning text-light"
                         className="bofjak"
                         onClick={() =>
-                            dataOne === "FUFI" ? addLiquidityETH() : confirmFunc(addressOne, addressTwo, inputValue, inputValueOne)
+                            dataOne === "FUFI" ? handlFufiCoin() : confirmFunc(addressOne, addressTwo, inputValue, inputValueOne)
                         }
                     >
                         {dataOne === "FUFI" ? "Add Liquidity ETH" : "Confirm LP"}
+                        
                     </Button>
                 </div>
             );
