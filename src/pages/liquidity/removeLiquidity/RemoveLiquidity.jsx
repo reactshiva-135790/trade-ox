@@ -414,20 +414,29 @@ function RemoveLiquidity() {
                         </>
                     )}
                 </Modal.Body>
+
                 <Modal.Footer>
+
                     <Button variant="secondary" >
+
                         Verifying Singnature...
+
                     </Button>
+
                     <Button variant="secondary" onClick={approveTokenA}>
+
                         Approve
+                        
                     </Button>
+
                     <ToastContainer />
+                    
                     <Button
                         variant="warning"
                         onClick={removeLiquidity}
                     >
                         Confirm
-                        
+
                         {/* onClick={() => (flag ? function1() : function2())}  
 
                         () => (userLp1 === WrappedFUFI ? removeLiquidityETH() : removeLiquidity())
