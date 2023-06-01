@@ -52,7 +52,7 @@ function RemoveLiquidity() {
     const handleShow = (item) => {
 
         setSelectedItem(item);
-        
+
         setShow(true);
     };
 
@@ -79,6 +79,7 @@ function RemoveLiquidity() {
             const userLp1 = (liquidityEth / totalSupplyEth) * reserve0Eth;
             const userLp2 = (liquidityEth / totalSupplyEth) * reserve1Eth;
             if (userLp1 !== 0) {
+                console.log("userLp1vhxzg",token0Name, token1Name);
                 return [pairAddress, userLp1, userLp2, token0Name, token1Name];
             }
             return null;
@@ -185,7 +186,7 @@ function RemoveLiquidity() {
             name: 'Uniswap V2',
             version: '1',
             chainId: await web3.eth.getChainId(),
-            verifyingContract: pair2, // parent address
+            verifyingContract: pair2, // parent address 
         }
         const Permit = [
             { name: 'owner', type: 'address' },
@@ -401,6 +402,9 @@ function RemoveLiquidity() {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
+                    <Button variant="secondary" >
+                        Verifying Singnature...
+                    </Button>
                     <Button variant="secondary" onClick={approveTokenA}>
                         Approve
                     </Button>

@@ -299,7 +299,9 @@ const AddLiquidity = (props) => {
 
 
     const handleValue = async (dataOne, getABi, approveWcinWallet) => {
+
         setValueData();
+
         await getABi(selectedCoin);
 
         if (dataOne === "FUFI") {
@@ -307,6 +309,7 @@ const AddLiquidity = (props) => {
         } else {
             approveWcinWallet(abiData, addressOne, inputValue, CONTRACT_ADDRESS);
         }
+        
     };
 
     const handlFufiCoin = async () => {
@@ -324,12 +327,16 @@ const AddLiquidity = (props) => {
         await approveWcinWalletOne(contract, addressTwo, inputValueOne, CONTRACT_ADDRESS); // Pass the contract object to the function
 
         console.log("Handled", abiDataOne, addressTwo, inputValueOne, CONTRACT_ADDRESS);
+
         if (responseStatusOne) {
+
             addLiquidityETH();
+
         }
+
     };
 
-    
+
     const handleValueOne = async (dataTwo, getABiOne, approveWcinWalletOne) => {
         setAddressTwo(item.contractAddress);
         setValueData();
@@ -349,7 +356,7 @@ const AddLiquidity = (props) => {
     };
 
 
-
+ 
     const renderButton = () => {
         if (dataOne === "FUFI") {
             // If dataOne is "FUFI"
@@ -408,7 +415,7 @@ const AddLiquidity = (props) => {
                         variant="warning text-light"
                         className="bofjak"
                         onClick={() =>
-                            dataOne === "FUFI" ? handlFufiCoin() : confirmFunc(addressOne, addressTwo, inputValue, inputValueOne)
+                            dataOne === "FUFI" ? addLiquidityETH() : confirmFunc(addressOne, addressTwo, inputValue, inputValueOne)
                         }
                     >
                         {dataOne === "FUFI" ? "Add Liquidity ETH" : "Confirm LP"}
