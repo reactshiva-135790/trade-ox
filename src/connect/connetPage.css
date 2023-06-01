@@ -1,0 +1,116 @@
+.fOPopv {
+    display: flex;
+}
+
+.csqZAq {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.chfQFH {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.boFdiO {
+    color: #7a6eaa;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.jxXgOi {
+    background-color: #eee;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+
+
+.connect-page {
+    height: 100vh;
+}
+
+.hkBZhX {
+    color: #7a6eaa;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* align-content: baseline; */
+    margin-top: 2.2%;
+}
+
+.connect-home{
+    margin-top: 5% !important;
+}
+
+
+.bofjak {
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 300;
+    -webkit-box-pack: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    opacity: 1;
+    outline: 0px;
+    transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
+    height: 40px;
+    padding: 0px 24px;
+    background-color: #feb100;
+    color: #fff;
+}
+
+.rlogin-button {
+    position: relative;
+    -webkit-box-align: center !important;
+    align-items: center !important;
+    border: 0px !important;
+    border-radius: 16px !important;
+    /*box-shadow: rgba(14, 14, 44, 0.4) 0px -1px 0px 0px inset !important;*/
+    cursor: pointer !important;
+    display: inline-flex !important;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    -webkit-box-pack: center !important;
+    justify-content: center !important;
+    letter-spacing: 0.03em !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    outline: 0px !important;
+    transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s !important;
+    height: 48px !important;
+    padding: 0px 24px !important;
+    background-color: #feb100 !important;
+    color: #fff !important;
+}
+
+.bxckj {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+
+@media (max-width: 540px) {
+    .bxckj {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

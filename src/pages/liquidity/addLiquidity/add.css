@@ -1,0 +1,70 @@
+.cdTwan {
+    padding: 8px;
+    background: #e7e3eb;
+    border: 1px solid #e7e3eb;
+    border-radius: 8px 8px 0px 0px;
+    height: auto;
+    font-size: 14px;
+    color: #333;
+    width: 10%;
+}
+
+.add-liquid {
+    margin-top: 8% !important;
+}
+
+.add-liq {
+    height: 100vh;
+}
+
+.cdTwan-one {
+    padding: 8px;
+    background: #e7e3eb;
+    border: 1px solid #e7e3eb;
+    border-radius: 8px 8px 0px 0px;
+    height: auto;
+    font-size: 14px;
+    color: #333;
+    width: 10%;
+}
+
+.brtt {
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 16px;
+    box-shadow: rgba(14, 14, 44, 0.4) 0px -1px 0px 0px inset;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    -webkit-box-pack: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    opacity: 1;
+    outline: 0px;
+    transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
+    height: 48px;
+    padding: 0px 24px;
+    background-color: #feb100;
+    color: #f1f1f1;
+    width: 50%;
+}
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    border: 11.2px #ffc107 double;
+    border-left-style: solid;
+    border-radius: 50%;
+    animation: spinner-aib1d7 0.75s infinite linear;
+ }
+ 
+ @keyframes spinner-aib1d7 {
+    to {
+       transform: rotate(360deg);
+    }
+ }

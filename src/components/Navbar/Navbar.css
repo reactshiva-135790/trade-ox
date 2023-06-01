@@ -1,0 +1,26 @@
+
+.nav-link-mode {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sub-nav {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sub-nav:hover {
+    transform: scale(1.1);
+    transition: all .2s ease-in-out;
+    font-weight: 400;
+    background-color: #feb100;
+    border-radius: 80px;
+    color: #f1f1f1;
+    border: none;
+    padding: 5px 11px;
+    transition: all 2s ease;
+}
