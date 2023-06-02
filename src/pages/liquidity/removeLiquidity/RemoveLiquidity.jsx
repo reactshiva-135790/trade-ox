@@ -30,7 +30,7 @@ function RemoveLiquidity() {
     const [ChildPair, setChildPair] = useState([]);
 
     const [inputValue, setInputValue] = useState("");
-
+    const [wrappedFufi, setWrappedFufi] = useState(false);
     const { active, account, library } = useWeb3React();
 
     const [show, setShow] = useState(false);
@@ -140,15 +140,50 @@ function RemoveLiquidity() {
                         res1[item[4]] = item[2];
                         finalArr.push(res1);
                     }
-                    console.log("tokenPairAddress", finalArr);  //data in Array of nestedObject
-                    console.log("result", result);   //data in Array of nestedArray
+                    console.log("tokenPairAddress", finalArr); // data in Array of nestedObject
+                    console.log("result", result); // data in Array of nestedArray
                     setChildPair(finalArr);
+
+                    if (wrappedFufi) {
+                        removeLiquidityETH();
+                        
+                    } else {
+                        removeLiquidity();
+                    }
                 })
                 .catch((error) => {
                     console.error(error);
                 });
         }
-    }, [account]);
+    }, [account, wrappedFufi]);
+
+    // useEffect(() => {
+    //     if (account) {
+    //         getTokenPair()
+    //             .then((result) => {
+    //                 let finalArr = [];
+    //                 for (var item of result) {
+    //                     let res1 = {};
+    //                     res1["ParentAddress"] = item[0];
+    //                     res1[item[3]] = item[1];
+    //                     res1[item[4]] = item[2];
+    //                     finalArr.push(res1);
+    //                 }
+    //                 console.log("tokenPairAddress", finalArr); // data in Array of nestedObject
+    //                 console.log("result", result); // data in Array of nestedArray
+    //                 setChildPair(finalArr);
+
+    //                 if (wrappedFufi) {
+    //                     removeLiquidityETH();
+    //                 } else {
+    //                     removeLiquidity();
+    //                 }
+    //             })
+    //             .catch((error) => {
+    //                 console.error(error);
+    //             });
+    //     }
+    // }, [account, wrappedFufi]);
 
     const approveTokenA = async () => {
         const keys = Object.keys(selectedItem);
@@ -256,6 +291,7 @@ function RemoveLiquidity() {
 
 
     const removeLiquidity = async () => {
+        console.log("removeLiquidity");
         const keys = Object.keys(selectedItem);
         const index_1_value = selectedItem[keys[0]].toString();
         const contract = new web3.eth.Contract(abipair, index_1_value)
@@ -426,23 +462,15 @@ function RemoveLiquidity() {
                     <Button variant="secondary" onClick={approveTokenA}>
 
                         Approve
-                        
+
                     </Button>
 
                     <ToastContainer />
-                    
-                    <Button
-                        variant="warning"
-                        onClick={removeLiquidity}
-                    >
+
+                    <Button variant="warning" onClick={() => setWrappedFufi(!wrappedFufi)}>
                         Confirm
-
-                        {/* onClick={() => (flag ? function1() : function2())}  
-
-                        () => (userLp1 === WrappedFUFI ? removeLiquidityETH() : removeLiquidity())
-                        
-                        */}
                     </Button>
+
                     <ToastContainer />
                 </Modal.Footer>
             </Modal>

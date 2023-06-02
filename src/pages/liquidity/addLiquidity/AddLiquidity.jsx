@@ -309,14 +309,14 @@ const AddLiquidity = (props) => {
         } else {
             approveWcinWallet(abiData, addressOne, inputValue, CONTRACT_ADDRESS);
         }
-        
+
     };
 
     const handlFufiCoin = async () => {
 
         setValueData();
 
-        const contractAddress = CONTRACT_ADDRESS; // Replace with the actual contract address
+        const contractAddress = CONTRACT_ADDRESS; // Replace with the actual contract address 
 
         await getABiOne(contractAddress);
 
@@ -356,7 +356,7 @@ const AddLiquidity = (props) => {
     };
 
 
- 
+
     const renderButton = () => {
         if (dataOne === "FUFI") {
             // If dataOne is "FUFI"
