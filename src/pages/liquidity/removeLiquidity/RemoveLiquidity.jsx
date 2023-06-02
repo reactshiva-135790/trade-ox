@@ -17,6 +17,8 @@ import abipair from "../../../jsonData/abipair.json";
 
 function RemoveLiquidity() {
 
+
+
     const fufiMainApiUrl = process.env.REACT_APP_FUFI_MAIN_API_URL;
 
     let account1 = "0xb0B46A6fe9AD35AbB025b0E74836601B22860E6a";
@@ -146,7 +148,6 @@ function RemoveLiquidity() {
 
                     if (wrappedFufi) {
                         removeLiquidityETH();
-                        
                     } else {
                         removeLiquidity();
                     }
@@ -157,33 +158,6 @@ function RemoveLiquidity() {
         }
     }, [account, wrappedFufi]);
 
-    // useEffect(() => {
-    //     if (account) {
-    //         getTokenPair()
-    //             .then((result) => {
-    //                 let finalArr = [];
-    //                 for (var item of result) {
-    //                     let res1 = {};
-    //                     res1["ParentAddress"] = item[0];
-    //                     res1[item[3]] = item[1];
-    //                     res1[item[4]] = item[2];
-    //                     finalArr.push(res1);
-    //                 }
-    //                 console.log("tokenPairAddress", finalArr); // data in Array of nestedObject
-    //                 console.log("result", result); // data in Array of nestedArray
-    //                 setChildPair(finalArr);
-
-    //                 if (wrappedFufi) {
-    //                     removeLiquidityETH();
-    //                 } else {
-    //                     removeLiquidity();
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 console.error(error);
-    //             });
-    //     }
-    // }, [account, wrappedFufi]);
 
     const approveTokenA = async () => {
         const keys = Object.keys(selectedItem);
@@ -466,7 +440,6 @@ function RemoveLiquidity() {
                     </Button>
 
                     <ToastContainer />
-
                     <Button variant="warning" onClick={() => setWrappedFufi(!wrappedFufi)}>
                         Confirm
                     </Button>
